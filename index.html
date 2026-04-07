@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    #link {
+      margin-top: 10px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="qrcode"></canvas>
+  <input id="link" placeholder="://">
+
+  <script>
+    const canvas = document.getElementById('qrcode');
+    const input = document.getElementById('link');
+    
+    function createQRCode() {
+      new QRious({
+        element: canvas,
+        value: input.value,
+        size: 300
+      });
+    }
+
+    input.addEventListener('input', createQRCode);
+    createQRCode();
+  </script>
+</body>
+</html>
